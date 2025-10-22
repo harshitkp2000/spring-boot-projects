@@ -8,7 +8,7 @@ import lombok.Data;
 @Table(name = "StudentTable")
 public class StudentEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String email;
@@ -16,6 +16,7 @@ public class StudentEntity {
     public StudentEntity() {
 
     }
+
     public StudentEntity(String name, String email) {
         this.name = name;
         this.email = email;

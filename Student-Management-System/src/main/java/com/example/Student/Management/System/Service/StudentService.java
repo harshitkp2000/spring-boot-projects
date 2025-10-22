@@ -8,18 +8,20 @@ import java.util.List;
 
 @Service
 public class StudentService implements StudentServiceInterface {
+
     private final StudentRepository studentRepository;
 
     public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
-    public List<StudentEntity> getAllStudents(){
-    return studentRepository.findAll();
+
+    public List<StudentEntity> getAllStudents() {
+        return studentRepository.findAll();
     }
 
     @Override
-    public StudentEntity createStudent(StudentEntity student){
-    return studentRepository.save(student);
+    public StudentEntity createStudent(StudentEntity student) {
+        return studentRepository.save(student);
     }
 
     @Override
@@ -30,7 +32,7 @@ public class StudentService implements StudentServiceInterface {
     @Override
     public StudentEntity updateStudentById(Long id, StudentEntity student) {
         StudentEntity existingStudent = studentRepository.findById(id).orElse(null);
-        if(existingStudent != null){
+        if (existingStudent != null) {
             existingStudent.setName(student.getName());
             existingStudent.setEmail(student.getEmail());
             return studentRepository.save(existingStudent);
@@ -41,7 +43,7 @@ public class StudentService implements StudentServiceInterface {
 
     @Override
     public void deleteStudentById(Long id) {
-    studentRepository.deleteById(id);
+        studentRepository.deleteById(id);
     }
 
 }
